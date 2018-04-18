@@ -9,13 +9,16 @@ import java.util.Map;
 import java.util.UUID;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import com.satalyst.powerbi.impl.model.DefaultTable;
+import com.satalyst.powerbi.model.Table;
+import static com.satalyst.powerbi.operations.MapUtils.getColumns;
 import static com.satalyst.powerbi.operations.MapUtils.getList;
 import static com.satalyst.powerbi.operations.MapUtils.getString;
 
 /**
  * @author Aidan Morgan
  */
-public class ListTables extends AbstractGetOperation<List<String>> {
+public class ListTables extends AbstractGetOperation<List<Table>> {
     private UUID datasetId;
 
     public ListTables(UUID datasetId) {
@@ -28,15 +31,15 @@ public class ListTables extends AbstractGetOperation<List<String>> {
 
     }
 
-    protected List<String> parseJson(Gson parser, String s) {
-        List<String> result = new ArrayList<>();
+    protected List<Table> parseJson(Gson parser, String s) {
+        List<Table> result = new ArrayList<>();
 
         Map parsed = parser.fromJson(s, Map.class);
 
         List<Map> tables = getList(parsed, "value");
 
         for (Map table : tables) {
-            result.add(getString(table, "name"));
+            result.add(new DefaultTable(getString(table, "name"),getColumns(table,"columns")));
         }
 
         return result;

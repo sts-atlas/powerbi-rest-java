@@ -19,9 +19,9 @@ public class DefaultTable implements Table {
     private String name;
     private List<Column> columns;
 
-    public DefaultTable(String name) {
+    public DefaultTable(String name, List<Column> columns) {
         this.name = name;
-        this.columns = new ArrayList<>();
+        this.columns = columns;
     }
 
     @Override

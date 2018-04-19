@@ -21,8 +21,12 @@ public class MapUtils {
     public static UUID getUuid(Map map, String name) {
         return UUID.fromString(getString(map, name));
     }
-    
+
     public static List<Column> getColumns(Map map, String name) {
         return (List<Column>) map.get(name);
+    }
+
+    public static Double getDouble(Map map, String name) {
+        return (Double) map.get(name);
     }
 }

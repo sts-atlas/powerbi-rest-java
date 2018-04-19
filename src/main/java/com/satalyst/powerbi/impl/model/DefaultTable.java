@@ -19,11 +19,16 @@ public class DefaultTable implements Table {
     private String name;
     private List<Column> columns;
 
+    public DefaultTable(String name) {
+        this.name = name;
+        this.columns = new ArrayList<>();
+    }
+    
     public DefaultTable(String name, List<Column> columns) {
         this.name = name;
         this.columns = columns;
     }
-
+    
     @Override
     public String getName() {
         return name;

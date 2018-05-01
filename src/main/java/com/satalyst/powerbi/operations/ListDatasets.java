@@ -30,7 +30,8 @@ public class ListDatasets extends AbstractGetOperation<List<Dataset>> {
         List<Map> datasets = getList(parsed, "value");
 
         for (Map dataset : datasets) {
-            result.add(new DefaultDataset(getString(dataset, "name"), UUID.fromString(getString(dataset, "id"))));
+            result.add(new DefaultDataset(getString(dataset, "name"), UUID.fromString(getString(dataset, "id")), getBoolean(dataset, "isRefreshable")));
+           
         }
 
         return result;

@@ -39,4 +39,10 @@ public class MapUtils {
 			return (Double) map.get(name);
 		return null;
 	}
+	
+	public static Boolean getBoolean(Map map, String name) {
+		if (map.containsKey(name))
+			return (Boolean) map.get(name);
+		return null;
+	}
 }

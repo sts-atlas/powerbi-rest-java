@@ -108,6 +108,6 @@ public class CreateDataset implements PowerBiOperation<Dataset> {
 
     private Dataset parseResponseJson(String json) {
         Map result = parser.fromJson(json, Map.class);
-        return new DefaultDataset(getString(result, "name"), getUuid(result, "id"));
+        return new DefaultDataset(getString(result, "name"), getUuid(result, "id"), getBoolean(result, "isRefreshable"));
     }
 }

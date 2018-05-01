@@ -10,4 +10,5 @@ import java.util.UUID;
 public interface Dataset {
     public UUID getId();
     public String getName();
+    public Boolean getRefreshStatus();
 }

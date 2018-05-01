@@ -18,10 +18,16 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class DefaultDataset implements Dataset {
     private String name;
     private UUID id;
+    private Boolean isRefreshable;
 
-    public DefaultDataset(String name, UUID id) {
+    public DefaultDataset(String name, UUID id, Boolean isRefreshable) {
         this.name = checkNotNull(name);
         this.id = checkNotNull(id);
+        this.isRefreshable = checkNotNull(isRefreshable);
+    }
+    
+    public Boolean getRefreshStatus() {
+        return isRefreshable;
     }
 
     public String getName() {
